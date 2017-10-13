@@ -1,0 +1,40 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "Thanks to leetcode-cli, we can have one universal repo for the leetcode",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint *.js",
+    "fix": "eslint --fix *.js",
+    "l": "leetcode user -l",
+    "t": "leetcode test",
+    "s": "leetcode submit",
+    "sh": "leetcode show",
+    "g": "leetcode show -l golang -g",
+    "ggen": "leetcode show -l golang -g",
+    "pgen": "leetcode show -l python -g",
+    "jgen": "leetcode show -l javascript -g",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harrifeng/leetcode.git"
+  },
+  "author": "harrifeng@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harrifeng/leetcode/issues"
+  },
+  "homepage": "https://github.com/harrifeng/leetcode#readme",
+  "dependencies": {
+    "eslint-config-airbnb": "^14.1.0",
+    "leetcode-cli": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3"
+  }
+}
