@@ -1,0 +1,8 @@
+language: go
+
+python:
+  - 1.x
+  - "1.7.x"
+
+script:
+  - go test -v ./...
