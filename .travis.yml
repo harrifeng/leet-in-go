@@ -5,4 +5,4 @@ python:
   - "1.7.x"
 
 script:
-  - go test -v ./...
+  - go test -v *.go
