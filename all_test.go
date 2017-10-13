@@ -38,7 +38,7 @@ func Test_addTwoNumbers(t *testing.T) {
 		args args
 		want *ListNode
 	}{
-		{"", args{&ListNode{}, &ListNode{}}, &ListNode{}},
+		{"", args{NewList(2, 4, 3), NewList(5, 6, 4)}, NewList(7, 0, 8)},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
