@@ -6,7 +6,7 @@ import (
 )
 
 // 1.two-sum.go
-func Test_001(t *testing.T) {
+func Test_twoSum(t *testing.T) {
 	type args struct {
 		nums   []int
 		target int
