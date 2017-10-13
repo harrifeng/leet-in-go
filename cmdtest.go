@@ -11,49 +11,54 @@ import (
 )
 
 func main() {
-	f := flag.String("f", "1.two-sum.go", "Leetcode File Name")
+	lastP := os.Args[len(os.Args)-1]
 	test := flag.Bool("t", false, "Test File Name")
 	submit := flag.Bool("s", false, "Submit leetcode File Name")
+	gen := flag.Bool("g", false, "Generate leetcode File Name")
 
 	flag.Parse()
 
-	out, err := exec.Command("git", "add", *f).Output()
+	if _, err := os.Stat(lastP); err == nil {
+		_, err := exec.Command("git", "add", lastP).Output()
 
-	input, err := ioutil.ReadFile(*f)
+		input, err := ioutil.ReadFile(lastP)
 
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	lines := strings.Split(string(input), "\n")
-
-	for i, line := range lines {
-		if strings.Contains(line, "package leetcode") {
-			lines[i] = ""
+		if err != nil {
+			log.Fatalln(err)
 		}
-	}
-	output := strings.Join(lines, "\n")
-	err = ioutil.WriteFile(*f, []byte(output), 0644)
-	if err != nil {
-		log.Fatalln(err)
+
+		lines := strings.Split(string(input), "\n")
+
+		for i, line := range lines {
+			if strings.Contains(line, "package leetcode") {
+				lines[i] = ""
+			}
+		}
+		output := strings.Join(lines, "\n")
+		err = ioutil.WriteFile(lastP, []byte(output), 0644)
+		if err != nil {
+			log.Fatalln(err)
+		}
 	}
 
 	cmd := []string{"run"}
 	if *submit {
-		cmd = append(cmd, "s", *f)
+		cmd = append(cmd, "s", lastP)
 	} else if *test {
-		cmd = append(cmd, "t", *f)
+		cmd = append(cmd, "t", lastP)
+	} else if *gen {
+		cmd = append(cmd, "g", lastP)
 	} else {
 		cmd = append(cmd, "-h")
 	}
 
-	out, err = exec.Command("npm", cmd...).Output()
+	out, err := exec.Command("npm", cmd...).Output()
 	if err != nil {
 		log.Fatalln(err)
 	}
 	fmt.Println(string(out))
 
-	out, err = exec.Command("git", "checkout", "--", *f).Output()
+	out, err = exec.Command("git", "checkout", "--", lastP).Output()
 
 	fmt.Println(string(out))
 	os.Exit(0)
