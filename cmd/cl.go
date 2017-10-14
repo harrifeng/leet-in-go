@@ -15,6 +15,7 @@ func main() {
 	test := flag.Bool("t", false, "Test File Name")
 	submit := flag.Bool("s", false, "Submit leetcode File Name")
 	gen := flag.Bool("g", false, "Generate leetcode File Name")
+	show := flag.Bool("sh", false, "Show leetcode File Name")
 
 	flag.Parse()
 
@@ -48,6 +49,8 @@ func main() {
 		cmd = append(cmd, "t", lastP)
 	} else if *gen {
 		cmd = append(cmd, "g", lastP)
+	} else if *show {
+		cmd = append(cmd, "sh", lastP)
 	} else {
 		cmd = append(cmd, "-h")
 	}
