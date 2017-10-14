@@ -1,6 +1,9 @@
 package leetcode
 
-import "bytes"
+import (
+	"bytes"
+	"strings"
+)
 
 func convert(s string, numRows int) string {
 	if numRows == 1 {
@@ -21,9 +24,9 @@ func convert(s string, numRows int) string {
 			ret[group-curr].WriteByte(s[i])
 		}
 	}
-	rr := ""
+	rr := []string{}
 	for i := 0; i < numRows; i++ {
-		rr += ret[i].String()
+		rr = append(rr, ret[i].String())
 	}
-	return rr
+	return strings.Join(rr, "")
 }
