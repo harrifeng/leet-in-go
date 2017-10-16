@@ -136,3 +136,26 @@ func Test_convert(t *testing.T) {
 		})
 	}
 }
+
+// 7.reverse-integer.go
+func Test_reverse(t *testing.T) {
+	type args struct {
+		x int
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{"", args{123}, 321},
+		{"", args{-123}, -321},
+		{"", args{1534236469}, 0},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := reverse(tt.args.x); got != tt.want {
+				t.Errorf("reverse() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
