@@ -13,7 +13,7 @@ func reverse(x int) int {
 
 	for x != 0 {
 		ret = ret*10 + x%10
-		if ret > int(math.Pow(2, 31))-1 {
+		if ret > math.MaxInt32 {
 			return 0
 		}
 
